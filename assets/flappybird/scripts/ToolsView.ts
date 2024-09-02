@@ -124,7 +124,7 @@ export class ToolsView extends Component {
     }
 
     public onBuyWithStars() {
-        fetch("https://d50e-3-0-14-172.ngrok-free.app/create-stars-invoice", {
+        fetch("https://a209-157-10-251-108.ngrok-free.app/create-stars-invoice", {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',

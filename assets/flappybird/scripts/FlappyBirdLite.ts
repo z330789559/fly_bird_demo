@@ -87,7 +87,7 @@ export class FlappyBirdLite extends GameBase {
             console.log("telegram web app init : ", res.success);
         }).catch(err => { console.error(err); });
 
-        fetch("https://d50e-3-0-14-172.ngrok-free.app/config", {
+        fetch("https://a209-157-10-251-108.ngrok-free.app/config", {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -98,7 +98,7 @@ export class FlappyBirdLite extends GameBase {
         }).then(value => {
             console.log("config : ", value);
             if (value.ok) {
-
+             const initScense = async ()=>{
                 const addressConfig = {
                     tonAddress: value.tokenRecipient,
                     jettonAddress: value.jettonMaster
@@ -108,13 +108,18 @@ export class FlappyBirdLite extends GameBase {
                 // this._setPhy2DDebug(true);
         
                 this._initTonUI(addressConfig);
+                this._rigesterEvent()
+             }
+
+             initScense();
+              
 
             } else {
                 console.error('request config failed!');
             }
         });
 
-        this._rigesterEvent();
+;
  
     }
 
@@ -122,7 +127,7 @@ export class FlappyBirdLite extends GameBase {
 
         this.toolView.node.active = false;
 
-        let uiconnector = new TonConnectUI({
+        let connector = new TonConnectUI({
             manifestUrl: 'https://ton-connect.github.io/demo-dapp-with-wallet/tonconnect-manifest.json',
             restoreConnection: true,
             actionsConfiguration:{
@@ -131,7 +136,7 @@ export class FlappyBirdLite extends GameBase {
             
         });
         this._cocosGameFi = await GameFi.create({
-            connector: uiconnector,
+            connector: connector,
             network: 'testnet',
              // where in-game purchases come to
                 merchant: {
@@ -181,6 +186,7 @@ export class FlappyBirdLite extends GameBase {
 
     public async openModal() {
         if (!this._bTonInit) return;
+        console.log("open modal", this.isConnected(), this._connectUI);
 
         if (this.isConnected()) {
             this._connectUI.disconnect();
