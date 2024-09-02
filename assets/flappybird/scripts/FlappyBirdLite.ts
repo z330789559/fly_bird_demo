@@ -11,8 +11,10 @@ import { Countdown } from '../../scripts/framework/common/Countdown';
 import { LogManager } from '../../scripts/framework/common/LogManager';
 import { Button } from 'cc';
 
-import { GameFi, TonConnectUI, Address, toNano } from '@ton/cocos-sdk';
+import { GameFi, Address, toNano } from '@ton/cocos-sdk';
+import { TonConnectUI } from '@tonconnect/ui'
 import { TelegramWebApp } from '../../cocos-telegram-miniapps/scripts/telegram-web';
+import  { TonConnect, WalletsListManager}  from 'sdk';
 import { ToolsView } from './ToolsView';
 
 const { ccclass, property } = _decorator;
@@ -126,7 +128,10 @@ export class FlappyBirdLite extends GameBase {
     async _initTonUI(addressConfig: TonAddressConfig) {
 
         this.toolView.node.active = false;
-
+    //   const was =await  TonConnect.getWallets();
+      const wm = new WalletsListManager();
+      const wms = await wm.fetchWalletsList()
+      console.log("wms wallets : ", wms);
         let connector = new TonConnectUI({
             manifestUrl: 'https://ton-connect.github.io/demo-dapp-with-wallet/tonconnect-manifest.json',
             restoreConnection: true,
@@ -135,6 +140,8 @@ export class FlappyBirdLite extends GameBase {
             }
             
         });
+       const  wallets = await connector.getWallets()
+       console.log("wallets : ", wallets);
         this._cocosGameFi = await GameFi.create({
             connector: connector,
             network: 'testnet',
