@@ -6,8 +6,12 @@ import { TelegramWebApp } from '../../cocos-telegram-miniapps/scripts/telegram-w
 import { game } from 'cc';
 import { assetManager, SpriteFrame, Texture2D } from 'cc';
 import { ImageAsset } from 'cc';
-import { TonAddressConfig } from './FlappyBirdLite';
+// import { TonAddressConfig } from './FlappyBirdLite';
 const { ccclass, property } = _decorator;
+export interface TonAddressConfig {
+    tonAddress: string,
+    jettonAddress?: string;
+}
 
 @ccclass('ToolsView')
 export class ToolsView extends Component {
