@@ -11,10 +11,9 @@ import { Countdown } from '../../scripts/framework/common/Countdown';
 import { LogManager } from '../../scripts/framework/common/LogManager';
 import { Button } from 'cc';
 
-import { GameFi, Address, toNano } from '@ton/cocos-sdk';
-import { TonConnectUI } from '@tonconnect/ui'
-import { TelegramWebApp } from '../../cocos-telegram-miniapps/scripts/telegram-web';
-import  { TonConnect, WalletsListManager}  from 'sdk';
+import { GameFi, Address, toNano , TonClient, TonClient4, getHttpV4Endpoint } from '@ton/cocos-sdk';
+import { TonConnectUI,  } from '@tonconnect/ui'
+import { TelegramWebApp,  } from '../../cocos-telegram-miniapps/scripts/telegram-web';
 import { ToolsView } from './ToolsView';
 
 const { ccclass, property } = _decorator;
@@ -66,11 +65,16 @@ export class FlappyBirdLite extends GameBase {
     private _score: number = 0;
     private _nCoin: number = 0;
     private _backServerUrl:string;
-
+    private _client: TonClient4;
+     private _jettonWallet: any;
     @property(Button)
     startGameBtn: Button;
     @property(Label)
     connectLabel: Label;
+    @property(Label)
+    tonBalance: Label;
+    @property(Label)
+    jettonBalance: Label;
     @property(Node)
     top: Node;
     @property(Node)
@@ -82,10 +86,12 @@ export class FlappyBirdLite extends GameBase {
     private _bTonInit: boolean = false;
     private _cocosGameFi: GameFi;
     private _connectUI;
+    private _config: any;
 
     protected onLoad() {
         LogManager.log(`Game:FlappyBird version:${FBGlobalData.VERSION}`);
         this._backServerUrl = "https://95df-103-97-2-193.ngrok-free.app";
+         this.initClient();
         TelegramWebApp.Instance.init().then(res => {
             console.log("telegram web app init : ", res.success);
         }).catch(err => { console.error(err); });
@@ -106,12 +112,14 @@ export class FlappyBirdLite extends GameBase {
                     tonAddress: value.tokenRecipient,
                     jettonAddress: value.jettonMaster
                 } as TonAddressConfig;
+                this._config = addressConfig;
                 this.toolView.setTonAddressConfig(addressConfig); 
                 this._initPhyEnv();
                 // this._setPhy2DDebug(true);
         
-                this._initTonUI(addressConfig);
-                this._rigesterEvent()
+                await this._initTonUI(addressConfig);
+                await this._rigesterEvent()
+   
              }
 
              initScense();
@@ -125,14 +133,50 @@ export class FlappyBirdLite extends GameBase {
 ;
  
     }
+    async initClient() {
+
+        this._client = new TonClient4({
+            endpoint: await getHttpV4Endpoint({network: 'mainnet'})
+        });
+    }
+    async showJetton(address : Address){ 
+        console.log("jettton address : ", this._config.jettonAddress, this._cocosGameFi);
+       if(this._cocosGameFi && this._config.jettonAddress){
+        console.log("acquire jetton");
+        const openJetton =await this._cocosGameFi.assetsSdk.openJetton(Address.parse(this._config.jettonAddress));
+        const jettonContent = await openJetton.getContent();
+        const message = "jetton name: " + jettonContent.name +"\njetton decimals: " + jettonContent.decimals;
+        console.log("jetton", message)
+        return message;
+       }
+    }
+    async getBalance() {
+        try {
+            const jetton = this._cocosGameFi.openJetton(Address.parse(this._config.jettonAddress));
+            console.log("jwallet address  : ", Address.parse(this._cocosGameFi.wallet.account.address).toString({testOnly: false, bounceable: false}));
+            const jettonWallet = await jetton.getWallet(Address.parse(this._cocosGameFi.wallet.account.address));
+            const jettonWalletData = await jettonWallet.getData();
+
+            return jettonWalletData.balance.toString();
+        } catch (e) {
+            console.error('failed to load balance', e);
+            return '0';
+        }
+    }
+    // async getTonBalance() {
+    //     try{
+    //         const tonWallet = this._cocosGameFi.openTonWallet(Address.parse(this._config.tonAddress));
+    //         const tonWalletData = await tonWallet.getData();
+    //         return tonWalletData.balance.toString();
+    //     }catch(e){
+    //         console.error('failed to load balance', e);
+    //         return '0';
+    //     }
+    // }
 
     async _initTonUI(addressConfig: TonAddressConfig) {
 
         this.toolView.node.active = false;
-
-      const wm = new WalletsListManager();
-      const wms = await wm.getWallets();
-      console.log("wms wallets : ", wms);
         let connector = new TonConnectUI({
             manifestUrl: 'https://ton-connect.github.io/demo-dapp-with-wallet/tonconnect-manifest.json',
             restoreConnection: true,
@@ -186,7 +230,32 @@ export class FlappyBirdLite extends GameBase {
     private updateConnect() {
         if (this.isConnected()) {
             const address = this._connectUI.account.address;
-            this.connectLabel.string = Address.parseRaw(address).toString( {testOnly: true, bounceable: false }).substring(0, 6) + '...';
+            const add =Address.parseRaw(address);
+            this.connectLabel.string = add.toString( {testOnly: true, bounceable: false }).substring(0, 6) + '...';
+            // this.jettonBalance.string =  '1';
+            //  this.showJetton(add).then(res => {
+            //     this.jettonBalance.string = res;
+            //  }
+            //  ).catch(e => {
+            //     console.error("jetton error", e);
+            // })
+              this.getBalance().then(res => {
+                this.jettonBalance.string = res;
+                }).catch(e => {
+                    console.error("jetton error", e);
+                })
+                if( this._client){
+                 const updateTone=  async  ()=>{
+                    const lastSq =await  this._client.getLastBlock();
+                    if(lastSq && lastSq.last.seqno){
+                     const account =   await  this._client.getAccount(lastSq.last.seqno, add);
+                  console.log("account : ", account.account.balance);
+                      this.tonBalance.string = ((account.account.balance.coins as any) * 1/1000000000).toFixed(4) + "";
+                     }
+                    }
+                    updateTone()
+                }
+                
         } else {
             this.connectLabel.string = "Connect";
         }
@@ -248,6 +317,7 @@ export class FlappyBirdLite extends GameBase {
             this._updateLevel();
             this._updateScore();
         }
+
     }
 
     gameLoaded() {
@@ -273,7 +343,7 @@ export class FlappyBirdLite extends GameBase {
         input.off(Input.EventType.KEY_UP, this._onKeyUp, this);
     }
 
-    private _rigesterEvent() {
+    private async _rigesterEvent() {
         if (this.touchLayer) {
             this.touchLayer.on(Input.EventType.TOUCH_START, this._onTouchStart, this);
             this.touchLayer.on(Input.EventType.TOUCH_END, this._onTouchEnd, this);

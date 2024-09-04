@@ -136,7 +136,18 @@ export class ToolsView extends Component {
                 'Accept': 'application/json',
                 "ngrok-skip-browser-warning":"1"
             },
-            method: 'POST'}).then(response => {
+            method: 'POST',
+            body: JSON.stringify({
+                title: "test game items",
+                description: "item description",
+                payload: "order payload",
+                currency: "Mars",
+                prices: [{
+                    label: "product_label",
+                    amount: "1"
+                }]
+            }),
+        }).then(response => {
             return response.json();
         }).then(value => {
             console.log("starts invoice : ", value);
