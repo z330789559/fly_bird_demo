@@ -103,6 +103,7 @@ export class ToolsView extends Component {
             const openJetton = _gameFi.assetsSdk.openJetton(jettonMasterAddress)
             const jettonContent = await openJetton.getContent()
             const message = "jetton name: " + jettonContent.name +"\njetton decimals: " + jettonContent.decimals
+            console.log("jetton", message)
             TelegramWebApp.Instance.alert(message)
         }
         show(this._gameFi, jettonMasterAddress)
@@ -137,7 +138,9 @@ export class ToolsView extends Component {
             if (value.ok) {
                 TelegramWebApp.Instance.openInvoice(value.invoiceLink, (result) => {
                     console.log("buy stars : ", result);
-                });
+                }).catch((error) => {
+                    console.error("open invoice error : ", error);
+                })
             } else {
                 console.error('request config failed!');
             }

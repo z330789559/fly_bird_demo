@@ -144,7 +144,7 @@ export class FlappyBirdLite extends GameBase {
        console.log("wallets : ", wallets);
         this._cocosGameFi = await GameFi.create({
             connector: connector,
-            network: 'testnet',
+            network: 'mainnet',
              // where in-game purchases come to
                 merchant: {
                     // in-game jetton purchases (FLAP)
