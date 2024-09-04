@@ -5654,7 +5654,7 @@
     "_string": "initing",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 28.444444444444446,
+    "_actualFontSize": 22.444444444444443,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -7150,8 +7150,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 77.75638103485107,
-      "height": 50.40000000000001
+      "width": 77.75312669206373,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -7183,7 +7183,7 @@
     "_string": "Tools",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 42.66666666666667,
+    "_actualFontSize": 33.666666666666664,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -7236,7 +7236,7 @@
     "_target": null,
     "_left": 0,
     "_right": 0,
-    "_top": 11.204,
+    "_top": 11.204000000000008,
     "_bottom": 0,
     "_horizontalCenter": 0,
     "_verticalCenter": 0,
@@ -7720,8 +7720,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 75.0321900844574,
-      "height": 50.40000000000001
+      "width": 75.02904759775294,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -7753,7 +7753,7 @@
     "_string": "name",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 42.66666666666667,
+    "_actualFontSize": 33.666666666666664,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -7852,8 +7852,8 @@
     "__prefab": null,
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 138.42068552970886,
-      "height": 50.40000000000001
+      "width": 138.4148852659924,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -7885,7 +7885,7 @@
     "_string": "unconnect",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 42.66666666666667,
+    "_actualFontSize": 33.666666666666664,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -8072,7 +8072,7 @@
     "_string": "TransferTon",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 21,
+    "_actualFontSize": 16,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -8386,7 +8386,7 @@
     "_string": "UpdateUser",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 21,
+    "_actualFontSize": 16,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -8700,7 +8700,7 @@
     "_string": "Share",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 21,
+    "_actualFontSize": 16,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -9014,7 +9014,7 @@
     "_string": "ShowJetton",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 21,
+    "_actualFontSize": 16,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -9328,7 +9328,7 @@
     "_string": "BuyWithStars",
     "_horizontalAlign": 1,
     "_verticalAlign": 1,
-    "_actualFontSize": 21,
+    "_actualFontSize": 16,
     "_fontSize": 20,
     "_fontFamily": "Arial",
     "_lineHeight": 40,
@@ -9587,7 +9587,7 @@
     "_string": "",
     "_horizontalAlign": 0,
     "_verticalAlign": 1,
-    "_actualFontSize": 42.66666666666667,
+    "_actualFontSize": 33.666666666666664,
     "_fontSize": 30,
     "_fontFamily": "Arial",
     "_lineHeight": 40,

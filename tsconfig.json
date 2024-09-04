@@ -5,8 +5,8 @@
   /* Add your custom configuration here. */
   "compilerOptions": {
     "strict": false,
-    "target": "ES2016",
-    "module": "ESNext",
+    "target": "ES2015",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
