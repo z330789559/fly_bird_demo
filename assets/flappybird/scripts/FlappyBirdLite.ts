@@ -89,7 +89,7 @@ export class FlappyBirdLite extends GameBase {
             console.log("telegram web app init : ", res.success);
         }).catch(err => { console.error(err); });
 
-        fetch("https://a209-157-10-251-108.ngrok-free.app/config", {
+        fetch("https://95df-103-97-2-193.ngrok-free.app/config", {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
