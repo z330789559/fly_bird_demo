@@ -430,7 +430,7 @@ System.register("chunks:///_virtual/index.js", ['./cjs-loader.mjs'], function (e
   };
 });
 
-System.register("chunks:///_virtual/index.mjs", ['./rollupPluginModLoBabelHelpers.js', './index4.mjs', './ua-parser.mjs_cjs=&original=.js', './cjs.mjs_cjs=&original=.js', './index.mjs_cjs=&original=.js', './ua-parser.js', './index.js', './index3.mjs', './cjs.js'], function (exports) {
+System.register("chunks:///_virtual/index.mjs", ['./rollupPluginModLoBabelHelpers.js', './index3.mjs', './ua-parser.mjs_cjs=&original=.js', './cjs.mjs_cjs=&original=.js', './index.mjs_cjs=&original=.js', './ua-parser.js', './index.js', './index4.mjs', './cjs.js'], function (exports) {
   var _taggedTemplateLiteralLoose, _defineAccessor, _regeneratorRuntime, _createForOfIteratorHelperLoose, _inheritsLoose, _assertThisInitialized, _createClass, _wrapNativeSuper, toUserFriendlyAddress, TonConnectError, isWalletInfoCurrentlyInjected, isWalletInfoCurrentlyEmbedded, TonConnect, isTelegramUrl, createResponseVersionEvent, createRequestVersionEvent, createConnectionStartedEvent, createConnectionCompletedEvent, createConnectionErrorEvent, createConnectionRestoringStartedEvent, createConnectionRestoringCompletedEvent, createConnectionRestoringErrorEvent, createDisconnectionEvent, createTransactionSentForSignatureEvent, createTransactionSignedEvent, createTransactionSigningFailedEvent, createVersionInfo, encodeTelegramUrlParameters, isWalletInfoRemote, BrowserEventDispatcher, _cjsExports, _cjsExports$1, CHAIN, _cjsExports$2;
   return {
     setters: [function (module) {
@@ -62478,7 +62478,7 @@ System.register("chunks:///_virtual/index.ts", ['./rollupPluginModLoBabelHelpers
   };
 });
 
-System.register("chunks:///_virtual/index2.mjs", ['./rollupPluginModLoBabelHelpers.js', './index3.mjs', './browser.mjs_cjs=&original=.js', './browser.mjs_cjs=&original=2.js'], function (exports) {
+System.register("chunks:///_virtual/index2.mjs", ['./rollupPluginModLoBabelHelpers.js', './index4.mjs', './browser.mjs_cjs=&original=.js', './browser.mjs_cjs=&original=2.js'], function (exports) {
   var _inheritsLoose, _assertThisInitialized, _createClass, _wrapNativeSuper, _regeneratorRuntime, CONNECT_EVENT_ERROR_CODES, SEND_TRANSACTION_ERROR_CODES, SessionCrypto;
   return {
     setters: [function (module) {
@@ -63841,202 +63841,7 @@ System.register("chunks:///_virtual/index2.mjs", ['./rollupPluginModLoBabelHelpe
   };
 });
 
-System.register("chunks:///_virtual/index3.mjs", ['./nacl-util.mjs_cjs=&original=.js', './nacl-fast.mjs_cjs=&original=.js', './nacl-util.js', './nacl-fast.js'], function (exports) {
-  var _cjsExports, _cjsExports$1;
-  return {
-    setters: [null, null, function (module) {
-      _cjsExports = module.default;
-    }, function (module) {
-      _cjsExports$1 = module.default;
-    }],
-    execute: function () {
-      exports({
-        CHAIN: void 0,
-        CONNECT_EVENT_ERROR_CODES: void 0,
-        CONNECT_ITEM_ERROR_CODES: void 0,
-        DISCONNECT_ERROR_CODES: void 0,
-        SEND_TRANSACTION_ERROR_CODES: void 0,
-        SIGN_DATA_ERROR_CODES: void 0,
-        concatUint8Arrays: concatUint8Arrays,
-        hexToByteArray: hexToByteArray,
-        splitToUint8Arrays: splitToUint8Arrays,
-        toHexString: toHexString
-      });
-      var CONNECT_EVENT_ERROR_CODES;
-      (function (CONNECT_EVENT_ERROR_CODES) {
-        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
-        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["BAD_REQUEST_ERROR"] = 1] = "BAD_REQUEST_ERROR";
-        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["MANIFEST_NOT_FOUND_ERROR"] = 2] = "MANIFEST_NOT_FOUND_ERROR";
-        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["MANIFEST_CONTENT_ERROR"] = 3] = "MANIFEST_CONTENT_ERROR";
-        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["UNKNOWN_APP_ERROR"] = 100] = "UNKNOWN_APP_ERROR";
-        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["USER_REJECTS_ERROR"] = 300] = "USER_REJECTS_ERROR";
-        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
-      })(CONNECT_EVENT_ERROR_CODES || (CONNECT_EVENT_ERROR_CODES = exports('CONNECT_EVENT_ERROR_CODES', {})));
-      var CONNECT_ITEM_ERROR_CODES;
-      (function (CONNECT_ITEM_ERROR_CODES) {
-        CONNECT_ITEM_ERROR_CODES[CONNECT_ITEM_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
-        CONNECT_ITEM_ERROR_CODES[CONNECT_ITEM_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
-      })(CONNECT_ITEM_ERROR_CODES || (CONNECT_ITEM_ERROR_CODES = exports('CONNECT_ITEM_ERROR_CODES', {})));
-      var SEND_TRANSACTION_ERROR_CODES;
-      (function (SEND_TRANSACTION_ERROR_CODES) {
-        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
-        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["BAD_REQUEST_ERROR"] = 1] = "BAD_REQUEST_ERROR";
-        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["UNKNOWN_APP_ERROR"] = 100] = "UNKNOWN_APP_ERROR";
-        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["USER_REJECTS_ERROR"] = 300] = "USER_REJECTS_ERROR";
-        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
-      })(SEND_TRANSACTION_ERROR_CODES || (SEND_TRANSACTION_ERROR_CODES = exports('SEND_TRANSACTION_ERROR_CODES', {})));
-      var SIGN_DATA_ERROR_CODES;
-      (function (SIGN_DATA_ERROR_CODES) {
-        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
-        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["BAD_REQUEST_ERROR"] = 1] = "BAD_REQUEST_ERROR";
-        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["UNKNOWN_APP_ERROR"] = 100] = "UNKNOWN_APP_ERROR";
-        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["USER_REJECTS_ERROR"] = 300] = "USER_REJECTS_ERROR";
-        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
-      })(SIGN_DATA_ERROR_CODES || (SIGN_DATA_ERROR_CODES = exports('SIGN_DATA_ERROR_CODES', {})));
-      var DISCONNECT_ERROR_CODES;
-      (function (DISCONNECT_ERROR_CODES) {
-        DISCONNECT_ERROR_CODES[DISCONNECT_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
-        DISCONNECT_ERROR_CODES[DISCONNECT_ERROR_CODES["BAD_REQUEST_ERROR"] = 1] = "BAD_REQUEST_ERROR";
-        DISCONNECT_ERROR_CODES[DISCONNECT_ERROR_CODES["UNKNOWN_APP_ERROR"] = 100] = "UNKNOWN_APP_ERROR";
-        DISCONNECT_ERROR_CODES[DISCONNECT_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
-      })(DISCONNECT_ERROR_CODES || (DISCONNECT_ERROR_CODES = exports('DISCONNECT_ERROR_CODES', {})));
-      var CHAIN;
-      (function (CHAIN) {
-        CHAIN["MAINNET"] = "-239";
-        CHAIN["TESTNET"] = "-3";
-      })(CHAIN || (CHAIN = exports('CHAIN', {})));
-      function encodeUint8Array(value, urlSafe) {
-        var encoded = _cjsExports.encodeBase64(value);
-        if (!urlSafe) {
-          return encoded;
-        }
-        return encodeURIComponent(encoded);
-      }
-      function decodeToUint8Array(value, urlSafe) {
-        if (urlSafe) {
-          value = decodeURIComponent(value);
-        }
-        return _cjsExports.decodeBase64(value);
-      }
-      function encode(value, urlSafe) {
-        if (urlSafe === void 0) {
-          urlSafe = false;
-        }
-        var uint8Array;
-        if (value instanceof Uint8Array) {
-          uint8Array = value;
-        } else {
-          if (typeof value !== 'string') {
-            value = JSON.stringify(value);
-          }
-          uint8Array = _cjsExports.decodeUTF8(value);
-        }
-        return encodeUint8Array(uint8Array, urlSafe);
-      }
-      function decode(value, urlSafe) {
-        if (urlSafe === void 0) {
-          urlSafe = false;
-        }
-        var decodedUint8Array = decodeToUint8Array(value, urlSafe);
-        return {
-          toString: function toString() {
-            return _cjsExports.encodeUTF8(decodedUint8Array);
-          },
-          toObject: function toObject() {
-            try {
-              return JSON.parse(_cjsExports.encodeUTF8(decodedUint8Array));
-            } catch (e) {
-              return null;
-            }
-          },
-          toUint8Array: function toUint8Array() {
-            return decodedUint8Array;
-          }
-        };
-      }
-      var Base64 = exports('Base64', {
-        encode: encode,
-        decode: decode
-      });
-      function concatUint8Arrays(buffer1, buffer2) {
-        var mergedArray = new Uint8Array(buffer1.length + buffer2.length);
-        mergedArray.set(buffer1);
-        mergedArray.set(buffer2, buffer1.length);
-        return mergedArray;
-      }
-      function splitToUint8Arrays(array, index) {
-        if (index >= array.length) {
-          throw new Error('Index is out of buffer');
-        }
-        var subArray1 = array.slice(0, index);
-        var subArray2 = array.slice(index);
-        return [subArray1, subArray2];
-      }
-      function toHexString(byteArray) {
-        var hexString = '';
-        byteArray.forEach(function (_byte) {
-          hexString += ('0' + (_byte & 0xff).toString(16)).slice(-2);
-        });
-        return hexString;
-      }
-      function hexToByteArray(hexString) {
-        if (hexString.length % 2 !== 0) {
-          throw new Error("Cannot convert " + hexString + " to bytesArray");
-        }
-        var result = new Uint8Array(hexString.length / 2);
-        for (var i = 0; i < hexString.length; i += 2) {
-          result[i / 2] = parseInt(hexString.slice(i, i + 2), 16);
-        }
-        return result;
-      }
-      var SessionCrypto = exports('SessionCrypto', /*#__PURE__*/function () {
-        function SessionCrypto(keyPair) {
-          this.nonceLength = 24;
-          this.keyPair = keyPair ? this.createKeypairFromString(keyPair) : this.createKeypair();
-          this.sessionId = toHexString(this.keyPair.publicKey);
-        }
-        var _proto = SessionCrypto.prototype;
-        _proto.createKeypair = function createKeypair() {
-          return _cjsExports$1.box.keyPair();
-        };
-        _proto.createKeypairFromString = function createKeypairFromString(keyPair) {
-          return {
-            publicKey: hexToByteArray(keyPair.publicKey),
-            secretKey: hexToByteArray(keyPair.secretKey)
-          };
-        };
-        _proto.createNonce = function createNonce() {
-          return _cjsExports$1.randomBytes(this.nonceLength);
-        };
-        _proto.encrypt = function encrypt(message, receiverPublicKey) {
-          var encodedMessage = new TextEncoder().encode(message);
-          var nonce = this.createNonce();
-          var encrypted = _cjsExports$1.box(encodedMessage, nonce, receiverPublicKey, this.keyPair.secretKey);
-          return concatUint8Arrays(nonce, encrypted);
-        };
-        _proto.decrypt = function decrypt(message, senderPublicKey) {
-          var _splitToUint8Arrays = splitToUint8Arrays(message, this.nonceLength),
-            nonce = _splitToUint8Arrays[0],
-            internalMessage = _splitToUint8Arrays[1];
-          var decrypted = _cjsExports$1.box.open(internalMessage, nonce, senderPublicKey, this.keyPair.secretKey);
-          if (!decrypted) {
-            throw new Error("Decryption error: \n message: " + message.toString() + " \n sender pubkey: " + senderPublicKey.toString() + " \n keypair pubkey: " + this.keyPair.publicKey.toString() + " \n keypair secretkey: " + this.keyPair.secretKey.toString());
-          }
-          return new TextDecoder().decode(decrypted);
-        };
-        _proto.stringifyKeypair = function stringifyKeypair() {
-          return {
-            publicKey: toHexString(this.keyPair.publicKey),
-            secretKey: toHexString(this.keyPair.secretKey)
-          };
-        };
-        return SessionCrypto;
-      }());
-    }
-  };
-});
-
-System.register("chunks:///_virtual/index4.mjs", ['./rollupPluginModLoBabelHelpers.js', './index3.mjs', './browser.mjs_cjs=&original=.js', './browser.mjs_cjs=&original=2.js'], function (exports) {
+System.register("chunks:///_virtual/index3.mjs", ['./rollupPluginModLoBabelHelpers.js', './index4.mjs', './browser.mjs_cjs=&original=.js', './browser.mjs_cjs=&original=2.js'], function (exports) {
   var _inheritsLoose, _assertThisInitialized, _createClass, _wrapNativeSuper, _regeneratorRuntime, _createForOfIteratorHelperLoose, CONNECT_EVENT_ERROR_CODES, SEND_TRANSACTION_ERROR_CODES, Base64, SessionCrypto, hexToByteArray;
   return {
     setters: [function (module) {
@@ -68391,6 +68196,201 @@ System.register("chunks:///_virtual/index4.mjs", ['./rollupPluginModLoBabelHelpe
         }
         return result;
       }
+    }
+  };
+});
+
+System.register("chunks:///_virtual/index4.mjs", ['./nacl-util.mjs_cjs=&original=.js', './nacl-fast.mjs_cjs=&original=.js', './nacl-util.js', './nacl-fast.js'], function (exports) {
+  var _cjsExports, _cjsExports$1;
+  return {
+    setters: [null, null, function (module) {
+      _cjsExports = module.default;
+    }, function (module) {
+      _cjsExports$1 = module.default;
+    }],
+    execute: function () {
+      exports({
+        CHAIN: void 0,
+        CONNECT_EVENT_ERROR_CODES: void 0,
+        CONNECT_ITEM_ERROR_CODES: void 0,
+        DISCONNECT_ERROR_CODES: void 0,
+        SEND_TRANSACTION_ERROR_CODES: void 0,
+        SIGN_DATA_ERROR_CODES: void 0,
+        concatUint8Arrays: concatUint8Arrays,
+        hexToByteArray: hexToByteArray,
+        splitToUint8Arrays: splitToUint8Arrays,
+        toHexString: toHexString
+      });
+      var CONNECT_EVENT_ERROR_CODES;
+      (function (CONNECT_EVENT_ERROR_CODES) {
+        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
+        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["BAD_REQUEST_ERROR"] = 1] = "BAD_REQUEST_ERROR";
+        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["MANIFEST_NOT_FOUND_ERROR"] = 2] = "MANIFEST_NOT_FOUND_ERROR";
+        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["MANIFEST_CONTENT_ERROR"] = 3] = "MANIFEST_CONTENT_ERROR";
+        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["UNKNOWN_APP_ERROR"] = 100] = "UNKNOWN_APP_ERROR";
+        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["USER_REJECTS_ERROR"] = 300] = "USER_REJECTS_ERROR";
+        CONNECT_EVENT_ERROR_CODES[CONNECT_EVENT_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
+      })(CONNECT_EVENT_ERROR_CODES || (CONNECT_EVENT_ERROR_CODES = exports('CONNECT_EVENT_ERROR_CODES', {})));
+      var CONNECT_ITEM_ERROR_CODES;
+      (function (CONNECT_ITEM_ERROR_CODES) {
+        CONNECT_ITEM_ERROR_CODES[CONNECT_ITEM_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
+        CONNECT_ITEM_ERROR_CODES[CONNECT_ITEM_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
+      })(CONNECT_ITEM_ERROR_CODES || (CONNECT_ITEM_ERROR_CODES = exports('CONNECT_ITEM_ERROR_CODES', {})));
+      var SEND_TRANSACTION_ERROR_CODES;
+      (function (SEND_TRANSACTION_ERROR_CODES) {
+        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
+        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["BAD_REQUEST_ERROR"] = 1] = "BAD_REQUEST_ERROR";
+        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["UNKNOWN_APP_ERROR"] = 100] = "UNKNOWN_APP_ERROR";
+        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["USER_REJECTS_ERROR"] = 300] = "USER_REJECTS_ERROR";
+        SEND_TRANSACTION_ERROR_CODES[SEND_TRANSACTION_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
+      })(SEND_TRANSACTION_ERROR_CODES || (SEND_TRANSACTION_ERROR_CODES = exports('SEND_TRANSACTION_ERROR_CODES', {})));
+      var SIGN_DATA_ERROR_CODES;
+      (function (SIGN_DATA_ERROR_CODES) {
+        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
+        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["BAD_REQUEST_ERROR"] = 1] = "BAD_REQUEST_ERROR";
+        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["UNKNOWN_APP_ERROR"] = 100] = "UNKNOWN_APP_ERROR";
+        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["USER_REJECTS_ERROR"] = 300] = "USER_REJECTS_ERROR";
+        SIGN_DATA_ERROR_CODES[SIGN_DATA_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
+      })(SIGN_DATA_ERROR_CODES || (SIGN_DATA_ERROR_CODES = exports('SIGN_DATA_ERROR_CODES', {})));
+      var DISCONNECT_ERROR_CODES;
+      (function (DISCONNECT_ERROR_CODES) {
+        DISCONNECT_ERROR_CODES[DISCONNECT_ERROR_CODES["UNKNOWN_ERROR"] = 0] = "UNKNOWN_ERROR";
+        DISCONNECT_ERROR_CODES[DISCONNECT_ERROR_CODES["BAD_REQUEST_ERROR"] = 1] = "BAD_REQUEST_ERROR";
+        DISCONNECT_ERROR_CODES[DISCONNECT_ERROR_CODES["UNKNOWN_APP_ERROR"] = 100] = "UNKNOWN_APP_ERROR";
+        DISCONNECT_ERROR_CODES[DISCONNECT_ERROR_CODES["METHOD_NOT_SUPPORTED"] = 400] = "METHOD_NOT_SUPPORTED";
+      })(DISCONNECT_ERROR_CODES || (DISCONNECT_ERROR_CODES = exports('DISCONNECT_ERROR_CODES', {})));
+      var CHAIN;
+      (function (CHAIN) {
+        CHAIN["MAINNET"] = "-239";
+        CHAIN["TESTNET"] = "-3";
+      })(CHAIN || (CHAIN = exports('CHAIN', {})));
+      function encodeUint8Array(value, urlSafe) {
+        var encoded = _cjsExports.encodeBase64(value);
+        if (!urlSafe) {
+          return encoded;
+        }
+        return encodeURIComponent(encoded);
+      }
+      function decodeToUint8Array(value, urlSafe) {
+        if (urlSafe) {
+          value = decodeURIComponent(value);
+        }
+        return _cjsExports.decodeBase64(value);
+      }
+      function encode(value, urlSafe) {
+        if (urlSafe === void 0) {
+          urlSafe = false;
+        }
+        var uint8Array;
+        if (value instanceof Uint8Array) {
+          uint8Array = value;
+        } else {
+          if (typeof value !== 'string') {
+            value = JSON.stringify(value);
+          }
+          uint8Array = _cjsExports.decodeUTF8(value);
+        }
+        return encodeUint8Array(uint8Array, urlSafe);
+      }
+      function decode(value, urlSafe) {
+        if (urlSafe === void 0) {
+          urlSafe = false;
+        }
+        var decodedUint8Array = decodeToUint8Array(value, urlSafe);
+        return {
+          toString: function toString() {
+            return _cjsExports.encodeUTF8(decodedUint8Array);
+          },
+          toObject: function toObject() {
+            try {
+              return JSON.parse(_cjsExports.encodeUTF8(decodedUint8Array));
+            } catch (e) {
+              return null;
+            }
+          },
+          toUint8Array: function toUint8Array() {
+            return decodedUint8Array;
+          }
+        };
+      }
+      var Base64 = exports('Base64', {
+        encode: encode,
+        decode: decode
+      });
+      function concatUint8Arrays(buffer1, buffer2) {
+        var mergedArray = new Uint8Array(buffer1.length + buffer2.length);
+        mergedArray.set(buffer1);
+        mergedArray.set(buffer2, buffer1.length);
+        return mergedArray;
+      }
+      function splitToUint8Arrays(array, index) {
+        if (index >= array.length) {
+          throw new Error('Index is out of buffer');
+        }
+        var subArray1 = array.slice(0, index);
+        var subArray2 = array.slice(index);
+        return [subArray1, subArray2];
+      }
+      function toHexString(byteArray) {
+        var hexString = '';
+        byteArray.forEach(function (_byte) {
+          hexString += ('0' + (_byte & 0xff).toString(16)).slice(-2);
+        });
+        return hexString;
+      }
+      function hexToByteArray(hexString) {
+        if (hexString.length % 2 !== 0) {
+          throw new Error("Cannot convert " + hexString + " to bytesArray");
+        }
+        var result = new Uint8Array(hexString.length / 2);
+        for (var i = 0; i < hexString.length; i += 2) {
+          result[i / 2] = parseInt(hexString.slice(i, i + 2), 16);
+        }
+        return result;
+      }
+      var SessionCrypto = exports('SessionCrypto', /*#__PURE__*/function () {
+        function SessionCrypto(keyPair) {
+          this.nonceLength = 24;
+          this.keyPair = keyPair ? this.createKeypairFromString(keyPair) : this.createKeypair();
+          this.sessionId = toHexString(this.keyPair.publicKey);
+        }
+        var _proto = SessionCrypto.prototype;
+        _proto.createKeypair = function createKeypair() {
+          return _cjsExports$1.box.keyPair();
+        };
+        _proto.createKeypairFromString = function createKeypairFromString(keyPair) {
+          return {
+            publicKey: hexToByteArray(keyPair.publicKey),
+            secretKey: hexToByteArray(keyPair.secretKey)
+          };
+        };
+        _proto.createNonce = function createNonce() {
+          return _cjsExports$1.randomBytes(this.nonceLength);
+        };
+        _proto.encrypt = function encrypt(message, receiverPublicKey) {
+          var encodedMessage = new TextEncoder().encode(message);
+          var nonce = this.createNonce();
+          var encrypted = _cjsExports$1.box(encodedMessage, nonce, receiverPublicKey, this.keyPair.secretKey);
+          return concatUint8Arrays(nonce, encrypted);
+        };
+        _proto.decrypt = function decrypt(message, senderPublicKey) {
+          var _splitToUint8Arrays = splitToUint8Arrays(message, this.nonceLength),
+            nonce = _splitToUint8Arrays[0],
+            internalMessage = _splitToUint8Arrays[1];
+          var decrypted = _cjsExports$1.box.open(internalMessage, nonce, senderPublicKey, this.keyPair.secretKey);
+          if (!decrypted) {
+            throw new Error("Decryption error: \n message: " + message.toString() + " \n sender pubkey: " + senderPublicKey.toString() + " \n keypair pubkey: " + this.keyPair.publicKey.toString() + " \n keypair secretkey: " + this.keyPair.secretKey.toString());
+          }
+          return new TextDecoder().decode(decrypted);
+        };
+        _proto.stringifyKeypair = function stringifyKeypair() {
+          return {
+            publicKey: toHexString(this.keyPair.publicKey),
+            secretKey: toHexString(this.keyPair.secretKey)
+          };
+        };
+        return SessionCrypto;
+      }());
     }
   };
 });

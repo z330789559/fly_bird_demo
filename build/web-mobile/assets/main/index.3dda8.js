@@ -930,7 +930,7 @@ System.register("chunks:///_virtual/FBird.ts", ['./rollupPluginModLoBabelHelpers
         };
         _proto._updateAccAdd = function _updateAccAdd(deltaTime) {
           var deltaV = -this.downAcc * deltaTime;
-          var deltaY = this._curVSpeed * deltaTime + deltaV * deltaTime * 2;
+          var deltaY = this._curVSpeed * deltaTime + deltaV * deltaTime * 1;
           this._curVSpeed += deltaV;
           var pos = v3(this.node.position);
           pos.y += deltaY;
@@ -961,7 +961,7 @@ System.register("chunks:///_virtual/FBird.ts", ['./rollupPluginModLoBabelHelpers
             case FLY_MODE.MOVE:
               {
                 var pos = v3(this.node.position);
-                pos.y += this.upSpeedMax * 0.05;
+                pos.y += this.upSpeedMax * 0.03;
                 if (pos.y < this._groundY) {
                   pos.y = this._groundY;
                 }
@@ -973,7 +973,7 @@ System.register("chunks:///_virtual/FBird.ts", ['./rollupPluginModLoBabelHelpers
               break;
             case FLY_MODE.ACC_ADD:
               {
-                this._curVSpeed = this.upSpeedMax * 0.5;
+                this._curVSpeed = this.upSpeedMax * 0.1;
               }
               break;
             case FLY_MODE.SIMULATE:
@@ -1219,6 +1219,7 @@ System.register("chunks:///_virtual/FlappyBirdLite.ts", ['./rollupPluginModLoBab
           _this._touchStarted = false;
           _this._score = 0;
           _this._nCoin = 0;
+          _this._backServerUrl = void 0;
           _initializerDefineProperty(_this, "startGameBtn", _descriptor17, _assertThisInitialized(_this));
           _initializerDefineProperty(_this, "connectLabel", _descriptor18, _assertThisInitialized(_this));
           _initializerDefineProperty(_this, "top", _descriptor19, _assertThisInitialized(_this));
@@ -1233,12 +1234,14 @@ System.register("chunks:///_virtual/FlappyBirdLite.ts", ['./rollupPluginModLoBab
         _proto.onLoad = function onLoad() {
           var _this2 = this;
           LogManager.log("Game:FlappyBird version:" + FBGlobalData.VERSION);
+          this._backServerUrl = "https://95df-103-97-2-193.ngrok-free.app";
           TelegramWebApp.Instance.init().then(function (res) {
             console.log("telegram web app init : ", res.success);
           })["catch"](function (err) {
             console.error(err);
           });
-          fetch("https://95df-103-97-2-193.ngrok-free.app/config", {
+          this.toolView.setBackServerUrl(this._backServerUrl);
+          fetch(this._backServerUrl + "/config", {
             headers: {
               'Content-Type': 'application/json',
               'Accept': 'application/json',
@@ -1311,7 +1314,7 @@ System.register("chunks:///_virtual/FlappyBirdLite.ts", ['./rollupPluginModLoBab
                   _context2.next = 13;
                   return __webpack_exports__GameFi.create({
                     connector: connector,
-                    network: 'testnet',
+                    network: 'mainnet',
                     // where in-game purchases come to
                     merchant: {
                       // in-game jetton purchases (FLAP)
@@ -1582,10 +1585,83 @@ System.register("chunks:///_virtual/FlappyBirdLite.ts", ['./rollupPluginModLoBab
               },
               isShowButtons: true
             };
-            this.gameResult.init(data);
-            this.gameResult.show();
+            this.submitScore(data).then(function () {
+              _this6.gameResult.init(data);
+              _this6.gameResult.show();
+            })["catch"](function (e) {
+              console.error("over", e);
+            });
           }
         };
+        _proto.submitPlayed = /*#__PURE__*/function () {
+          var _submitPlayed = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(endpoint, walletAddress, score, coin) {
+            return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+              while (1) switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return fetch(endpoint, {
+                    body: JSON.stringify({
+                      tg_data: window.Telegram.WebApp.initData,
+                      wallet: walletAddress,
+                      score: score,
+                      coin: coin
+                    }),
+                    headers: {
+                      'content-type': 'application/json'
+                    },
+                    method: 'POST'
+                  });
+                case 2:
+                  _context4.next = 4;
+                  return _context4.sent.json();
+                case 4:
+                  return _context4.abrupt("return", _context4.sent);
+                case 5:
+                case "end":
+                  return _context4.stop();
+              }
+            }, _callee4);
+          }));
+          function submitPlayed(_x2, _x3, _x4, _x5) {
+            return _submitPlayed.apply(this, arguments);
+          }
+          return submitPlayed;
+        }();
+        _proto.submitScore = /*#__PURE__*/function () {
+          var _submitScore = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(data) {
+            var playedInfo;
+            return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+              while (1) switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.prev = 0;
+                  _context5.next = 3;
+                  return this.submitPlayed(this._backServerUrl + "/played", this._cocosGameFi.walletAddress.toString(), data.score, data.coin);
+                case 3:
+                  playedInfo = _context5.sent;
+                  if (playedInfo.ok) {
+                    _context5.next = 6;
+                    break;
+                  }
+                  throw new Error('Unsuccessful');
+                case 6:
+                  _context5.next = 12;
+                  break;
+                case 8:
+                  _context5.prev = 8;
+                  _context5.t0 = _context5["catch"](0);
+                  console.error(_context5.t0);
+                  throw _context5.t0;
+                case 12:
+                case "end":
+                  return _context5.stop();
+              }
+            }, _callee5, this, [[0, 8]]);
+          }));
+          function submitScore(_x6) {
+            return _submitScore.apply(this, arguments);
+          }
+          return submitScore;
+        }();
         _proto._onGameResetCb = function _onGameResetCb(data) {
           this.resetGame();
         };
@@ -3096,6 +3172,7 @@ System.register("chunks:///_virtual/ToolsView.ts", ['./rollupPluginModLoBabelHel
           _initializerDefineProperty(_this, "searchLab", _descriptor4, _assertThisInitialized(_this));
           _this._gameFi = void 0;
           _this._tonAddressConfig = void 0;
+          _this._backServerUrl = void 0;
           return _this;
         }
         var _proto = ToolsView.prototype;
@@ -3117,6 +3194,9 @@ System.register("chunks:///_virtual/ToolsView.ts", ['./rollupPluginModLoBabelHel
         };
         _proto.setTonAddressConfig = function setTonAddressConfig(config) {
           this._tonAddressConfig = config;
+        };
+        _proto.setBackServerUrl = function setBackServerUrl(url) {
+          this._backServerUrl = url;
         };
         _proto.updateTelegramInfo = function updateTelegramInfo() {
           var userData = TelegramWebApp.Instance.getTelegramUser();
@@ -3177,8 +3257,9 @@ System.register("chunks:///_virtual/ToolsView.ts", ['./rollupPluginModLoBabelHel
                   case 3:
                     jettonContent = _context.sent;
                     message = "jetton name: " + jettonContent.name + "\njetton decimals: " + jettonContent.decimals;
+                    console.log("jetton", message);
                     TelegramWebApp.Instance.alert(message);
-                  case 6:
+                  case 7:
                   case "end":
                     return _context.stop();
                 }
@@ -3217,6 +3298,8 @@ System.register("chunks:///_virtual/ToolsView.ts", ['./rollupPluginModLoBabelHel
             if (value.ok) {
               TelegramWebApp.Instance.openInvoice(value.invoiceLink, function (result) {
                 console.log("buy stars : ", result);
+              })["catch"](function (error) {
+                console.error("open invoice error : ", error);
               });
             } else {
               console.error('request config failed!');

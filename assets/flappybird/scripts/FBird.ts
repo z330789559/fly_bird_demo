@@ -108,7 +108,7 @@ export class FBird extends Component {
 
     private _updateAccAdd(deltaTime: number) {
         let deltaV = -this.downAcc * deltaTime;
-        let deltaY = this._curVSpeed * deltaTime + deltaV * deltaTime * 2;
+        let deltaY = this._curVSpeed * deltaTime + deltaV * deltaTime * 1;
         this._curVSpeed += deltaV;
         let pos = v3(this.node.position);
         pos.y += deltaY;
@@ -143,7 +143,7 @@ export class FBird extends Component {
             case FLY_MODE.MOVE:
                 {
                     let pos = v3(this.node.position);
-                    pos.y += this.upSpeedMax * 0.05;
+                    pos.y += this.upSpeedMax * 0.03;
                     if (pos.y < this._groundY) {
                         pos.y = this._groundY;
                     }
@@ -155,7 +155,7 @@ export class FBird extends Component {
                 break;
             case FLY_MODE.ACC_ADD:
                 {
-                    this._curVSpeed = this.upSpeedMax * 0.5;
+                    this._curVSpeed = this.upSpeedMax * 0.1;
                 }
                 break;
             case FLY_MODE.SIMULATE:

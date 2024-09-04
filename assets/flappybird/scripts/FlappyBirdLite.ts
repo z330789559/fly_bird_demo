@@ -65,6 +65,7 @@ export class FlappyBirdLite extends GameBase {
     private _touchStarted: boolean = false;
     private _score: number = 0;
     private _nCoin: number = 0;
+    private _backServerUrl:string;
 
     @property(Button)
     startGameBtn: Button;
@@ -84,12 +85,12 @@ export class FlappyBirdLite extends GameBase {
 
     protected onLoad() {
         LogManager.log(`Game:FlappyBird version:${FBGlobalData.VERSION}`);
-
+        this._backServerUrl = "https://95df-103-97-2-193.ngrok-free.app";
         TelegramWebApp.Instance.init().then(res => {
             console.log("telegram web app init : ", res.success);
         }).catch(err => { console.error(err); });
-
-        fetch("https://95df-103-97-2-193.ngrok-free.app/config", {
+        this.toolView.setBackServerUrl(this._backServerUrl);
+        fetch(`${this._backServerUrl}/config`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -399,8 +400,44 @@ export class FlappyBirdLite extends GameBase {
                 homeCb: () => this.gameLoaded(),
                 isShowButtons: true
             }
+             this.submitScore(data).then(() => {
             this.gameResult.init(data);
             this.gameResult.show();
+             }).catch(e => {
+                    console.error("over", e);
+                }
+            );
+        }
+    }
+    
+    async  submitPlayed(endpoint: string, walletAddress: string, score: number, coin: number) {
+        return await (await fetch(endpoint, {
+            body: JSON.stringify({
+                tg_data: (window as any).Telegram.WebApp.initData,
+                wallet: walletAddress,
+                score,
+                coin,
+            }),
+            headers: {
+                'content-type': 'application/json',
+            },
+            method: 'POST',
+        })).json();
+    }
+    private  async submitScore(data: GameResultInitParams) {
+
+        try {
+            const playedInfo = await this.submitPlayed(
+                `${this._backServerUrl}/played`,
+                this._cocosGameFi.walletAddress.toString(),
+                data.score,
+                data.coin,
+            ) as any;
+
+            if (!playedInfo.ok) throw new Error('Unsuccessful');
+        } catch (e) {
+            console.error(e);
+            throw e;
         }
     }
 

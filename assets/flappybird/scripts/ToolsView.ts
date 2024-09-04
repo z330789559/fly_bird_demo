@@ -26,6 +26,7 @@ export class ToolsView extends Component {
 
     private _gameFi: GameFi;
     private _tonAddressConfig: TonAddressConfig;
+    private _backServerUrl: string ;
 
     start() {
         this.searchLab.string = window.location.search;
@@ -45,6 +46,10 @@ export class ToolsView extends Component {
     }
     public setTonAddressConfig(config: TonAddressConfig) {
         this._tonAddressConfig = config;
+    }
+
+    public setBackServerUrl(url: string) {
+        this._backServerUrl = url;
     }
 
     private updateTelegramInfo() {
