@@ -128,9 +128,9 @@ export class FlappyBirdLite extends GameBase {
     async _initTonUI(addressConfig: TonAddressConfig) {
 
         this.toolView.node.active = false;
-    //   const was =await  TonConnect.getWallets();
+
       const wm = new WalletsListManager();
-      const wms = await wm.fetchWalletsList()
+      const wms = await wm.getWallets();
       console.log("wms wallets : ", wms);
         let connector = new TonConnectUI({
             manifestUrl: 'https://ton-connect.github.io/demo-dapp-with-wallet/tonconnect-manifest.json',
