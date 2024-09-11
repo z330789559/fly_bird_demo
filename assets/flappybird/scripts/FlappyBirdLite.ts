@@ -15,6 +15,7 @@ import { GameFi, Address, toNano , TonClient, TonClient4, getHttpV4Endpoint } fr
 import { TonConnectUI,  } from '@tonconnect/ui'
 import { TelegramWebApp,  } from '../../cocos-telegram-miniapps/scripts/telegram-web';
 import { ToolsView } from './ToolsView';
+import { config } from './Config';
 
 const { ccclass, property } = _decorator;
 const  URL_YOU_ASSIGNED_TO_YOUR_APP="https://t.me/birds_li_bot?game=ggg"
@@ -90,7 +91,7 @@ export class FlappyBirdLite extends GameBase {
 
     protected onLoad() {
         LogManager.log(`Game:FlappyBird version:${FBGlobalData.VERSION}`);
-        this._backServerUrl = "https://95df-103-97-2-193.ngrok-free.app";
+        this._backServerUrl = config.backendUrl;
          this.initClient();
         TelegramWebApp.Instance.init().then(res => {
             console.log("telegram web app init : ", res.success);

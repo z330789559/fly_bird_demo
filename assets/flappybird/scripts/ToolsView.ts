@@ -6,6 +6,7 @@ import { TelegramWebApp } from '../../cocos-telegram-miniapps/scripts/telegram-w
 import { game } from 'cc';
 import { assetManager, SpriteFrame, Texture2D } from 'cc';
 import { ImageAsset } from 'cc';
+import { config } from './Config';
 // import { TonAddressConfig } from './FlappyBirdLite';
 const { ccclass, property } = _decorator;
 export interface TonAddressConfig {
@@ -130,7 +131,7 @@ export class ToolsView extends Component {
     }
 
     public onBuyWithStars() {
-        fetch("https://95df-103-97-2-193.ngrok-free.app/create-stars-invoice", {
+        fetch(`${config.backendUrl}/create-stars-invoice`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
@@ -138,9 +139,9 @@ export class ToolsView extends Component {
             },
             method: 'POST',
             body: JSON.stringify({
-                title: "test game items",
-                description: "item description",
-                payload: "order payload",
+                title: "cloths items",
+                description: "this jacket is very cool",
+                payload: "op1000001",
                 currency: "Mars",
                 prices: [{
                     label: "product_label",
