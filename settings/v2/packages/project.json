@@ -40,7 +40,7 @@
   "general": {
     "designResolution": {
       "fitHeight": false,
-      "fitWidth": false
+      "fitWidth": true
     }
   },
   "script": {
