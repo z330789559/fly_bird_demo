@@ -3486,7 +3486,15 @@ System.register("chunks:///_virtual/ToolsView.ts", ['./rollupPluginModLoBabelHel
             userId = userData.id + '';
           }
           TelegramWebApp.Instance.share("https://t.me/birds_li_bot?game=ggg?startapp=" + userId, "Invite you to play a very interesting game");
-        };
+        }
+
+        /**
+         *      tg_data: z.string(),
+            payload:z.string(),
+            amount: z.number(),
+            title: z.string(),
+            product: z.string(),
+         */;
         _proto.onBuyWithStars = function onBuyWithStars() {
           fetch(config.backendUrl + "/create-stars-invoice", {
             headers: {
@@ -3496,14 +3504,11 @@ System.register("chunks:///_virtual/ToolsView.ts", ['./rollupPluginModLoBabelHel
             },
             method: 'POST',
             body: JSON.stringify({
+              tg_data: window.Telegram.WebApp.initData,
               title: "cloths items",
-              description: "this jacket is very cool",
               payload: "op1000001",
-              currency: "Mars",
-              prices: [{
-                label: "product_label",
-                amount: "1"
-              }]
+              amount: 1,
+              product: "test"
             })
           }).then(function (response) {
             return response.json();

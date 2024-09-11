@@ -130,6 +130,13 @@ export class ToolsView extends Component {
         TelegramWebApp.Instance.share("https://t.me/birds_li_bot?game=ggg?startapp=" + userId, "Invite you to play a very interesting game");
     }
 
+    /**
+     *      tg_data: z.string(),
+        payload:z.string(),
+        amount: z.number(),
+        title: z.string(),
+        product: z.string(),
+     */
     public onBuyWithStars() {
         fetch(`${config.backendUrl}/create-stars-invoice`, {
             headers: {
@@ -139,14 +146,11 @@ export class ToolsView extends Component {
             },
             method: 'POST',
             body: JSON.stringify({
+                tg_data:  (window as any).Telegram.WebApp.initData,
                 title: "cloths items",
-                description: "this jacket is very cool",
                 payload: "op1000001",
-                currency: "Mars",
-                prices: [{
-                    label: "product_label",
-                    amount: "1"
-                }]
+                amount: 1,
+                product: "test"
             }),
         }).then(response => {
             return response.json();
